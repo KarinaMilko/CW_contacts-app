@@ -3,6 +3,8 @@ const { contactsController } = require("./controllers");
 
 const app = express();
 
+app.use(express.json());
+
 //===============================================================
 
 // // GET /notebooks/135456 - параметр маршрута

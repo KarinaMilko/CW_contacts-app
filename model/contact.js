@@ -1,5 +1,5 @@
 const { format } = require("date-fns");
-const { uuid: uuidv4 } = require("uuid");
+const { v4: uuidv4 } = require('uuid');
 
 const contactsDB = [
   {
