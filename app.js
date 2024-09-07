@@ -29,6 +29,27 @@ app.use(express.json());
 //   const { params1, params2 } = req.query;
 //   console.log(number1, number2, params1, params2);
 // });
+//=================================================================
+
+// app.get(
+//   '',
+//   () => {},
+//   () => {},
+//   () => {}
+// );
+
+app.get(
+  "/",
+  (req, res, next) => {
+    // основні дії
+    console.log("validation");
+    next();
+  },
+  (req, res, next) => {
+    console.log("db");
+    res.status(200).send();
+  }
+);
 
 //================================================================
 
