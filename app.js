@@ -1,10 +1,14 @@
 const express = require("express");
-const { contactsController } = require("./controllers");
+const { contactsController, authController } = require("./controllers");
 const { validate, errorHandlers } = require("./middleware");
 const app = express();
 
 app.use(express.json());
-
+//================================================================
+// POST /login {email, password} -> {user} | error;
+// POST /signUp {name, email, password} -> {user} | error;
+app.post("/login", authController.login);
+app.post("/signUp", authController.signUp);
 //===============================================================
 
 // // GET /notebooks/135456 - параметр маршрута
