@@ -38,18 +38,18 @@ app.use(express.json());
 //   () => {}
 // );
 
-app.get(
-  "/",
-  (req, res, next) => {
-    // основні дії
-    console.log("validation");
-    next();
-  },
-  (req, res, next) => {
-    console.log("db");
-    res.status(200).send();
-  }
-);
+// app.get(
+//   "/",
+//   (req, res, next) => {
+//     // основні дії
+//     console.log("validation");
+//     next();
+//   },
+//   (req, res, next) => {
+//     console.log("db");
+//     res.status(200).send();
+//   }
+// );
 
 //================================================================
 
@@ -78,6 +78,6 @@ app.patch(
 // DELETE http://localhost:5000/contacts/555654
 app.delete("/contacts/:id", contactsController.deleteContactById);
 
-app.use(errorHandlers.errorHandler);
+app.use(errorHandlers.validationErrorHandler, errorHandlers.errorHandler);
 
 module.exports = app;
