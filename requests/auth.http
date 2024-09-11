@@ -24,3 +24,23 @@ Content-Type: application/json
     "email":"test@mail.com",
     "password":"qwerty0000"
 }
+
+### 201
+POST http://localhost:5000/signUp HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Test",
+    "email":"test1@mail.com",
+    "password":"qwerty0000"
+}
+
+### 409
+POST http://localhost:5000/signUp HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Test",
+    "email":"test@mail.com",
+    "password":"qwerty0000"
+}

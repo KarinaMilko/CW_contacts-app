@@ -32,4 +32,22 @@ module.exports.login = (req, res, next) => {
   res.status(200).send(preparedUser);
 };
 
-module.exports.signUp = (req, res, next) => {};
+module.exports.signUp = (req, res, next) => {
+  // отримати дані з запиту
+  const { body } = req;
+  // перевіряємо, чи юзер існує
+
+  // якщо є, то помилка
+  if (body.email in userDb) {
+    return next(createError(409, "User is already exists"));
+  }
+  // ні - створити користувача
+  const createdUser = { ...body, id: Date.now() };
+  userDb[body.email] = createdUser;
+
+  // повернути користувача без пароля
+  const preparedUser = { ...createdUser };
+  delete preparedUser.password;
+
+  res.status(201).send(preparedUser);
+};
